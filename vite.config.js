@@ -9,6 +9,6 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
-    emptyOutDir: true,
-  },
+    emptyOutDir: true, // <-- Correctly placed property
+  },                   // <-- Correct closing of the 'build' object
 });

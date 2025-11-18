@@ -1,0 +1,52 @@
+.loading-spinner {
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Skeleton bubble */
+.skeleton-message {
+  margin-bottom: 14px;
+}
+.skeleton-message .bubble {
+  height: 16px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  margin: 6px 0;
+  width: 100%;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+.skeleton-message .bubble.short {
+  width: 60%;
+}
+
+@keyframes pulse {
+  0% { opacity: .4; }
+  50% { opacity: .8; }
+  100% { opacity: .4; }
+}
+
+/* System typing indicator */
+.system-typing {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.75;
+}
+.dot-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse-dot 0.9s infinite alternate;
+}
+@keyframes pulse-dot {
+  0% { transform: scale(0.7); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 1; }
+}

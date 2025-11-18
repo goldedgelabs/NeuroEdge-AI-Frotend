@@ -1,0 +1,66 @@
+.reasoning-drawer {
+  width: 420px;
+  max-width: 92%;
+  position: fixed;
+  right: -460px;
+  top: 18px;
+  bottom: 18px;
+  background: linear-gradient(180deg, rgba(8,10,18,0.96), rgba(6,8,14,0.98));
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(2,6,23,0.8);
+  transition: right 280ms ease, opacity 280ms ease;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reasoning-drawer.open {
+  right: 18px;
+}
+
+.drawer-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.drawer-sub { font-size: 13px; color: rgba(230,238,248,0.7); margin-top:3px; }
+
+.drawer-actions button {
+  margin-left: 8px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.drawer-body {
+  padding: 12px;
+  overflow: auto;
+  flex: 1;
+}
+
+.empty {
+  padding: 18px;
+  color: rgba(200,210,220,0.7);
+  text-align: center;
+}
+
+.trace-list { display: flex; flex-direction: column; gap: 12px; padding-top: 10px; }
+
+.trace-step {
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.trace-header { display:flex; gap:10px; align-items:center; margin-bottom:8px; }
+.trace-index { font-size:12px; color: rgba(200,210,220,0.7); font-weight:700; }
+.trace-label { font-weight:700; }
+.trace-body { color: rgba(210,220,230,0.9); font-size:14px; white-space:pre-wrap; }

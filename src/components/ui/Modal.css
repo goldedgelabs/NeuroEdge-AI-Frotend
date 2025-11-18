@@ -1,0 +1,5 @@
+.ne-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; z-index:100; }
+.ne-modal { width: 720px; max-width: 96%; background: linear-gradient(180deg, rgba(8,10,18,0.96), rgba(6,8,14,0.98)); color:#e6eef8; border-radius:12px; padding: 14px; box-shadow:0 24px 60px rgba(2,6,23,0.9); }
+.ne-modal-header { display:flex; justify-content:space-between; align-items:center; gap:12px; border-bottom:1px solid rgba(255,255,255,0.03); padding-bottom:10px; }
+.ne-modal-close { background:transparent; border:none; color:#fff; cursor:pointer; }
+.ne-modal-body { padding-top:12px; max-height:60vh; overflow:auto; }

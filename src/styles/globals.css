@@ -1,0 +1,801 @@
+/* GLOBAL THEME */
+:root {
+  --gold: #ffd700;
+  --gold-dark: #ffb300;
+  --bg-dark: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --border-gold: rgba(255, 215, 0, 0.25);
+  --text-light: #e6e6e6;
+  --text-dim: #9a9a9a;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 20px;
+}
+
+/* CARDS */
+.card {
+  background: var(--bg-card);
+  border: 1px solid #222;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+/* HEADERS */
+.page-title {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* BUTTONS */
+.btn-gold {
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: #0d0d0d;
+  font-weight: 700;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+/* INPUTS */
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  background: #111;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+/* ------------------------------
+   GOLD EDGE MESSAGE BUBBLES
+--------------------------------*/
+
+/* Message Row */
+.message-row {
+  display: flex;
+  margin: 12px 0;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.message-row.assistant {
+  justify-content: flex-start;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+/* Bubble Base */
+.bubble {
+  max-width: 78%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  position: relative;
+  backdrop-filter: blur(14px);
+  animation: scaleIn 0.22s ease-out;
+}
+
+/* USER BUBBLE — glassy */
+.bubble-user {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* ASSISTANT BUBBLE — GoldEdge glow */
+.bubble-assistant {
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.35),
+              inset 0 0 8px rgba(255, 215, 0, 0.25);
+  color: #fcecb2;
+}
+
+/* Footer */
+.bubble-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  opacity: 0.7;
+}
+
+.timestamp {
+  font-size: 11px;
+}
+
+/* Action Menu Button */
+.bubble-menu-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px;
+}
+
+/* Menu Dropdown */
+.bubble-menu {
+  position: absolute;
+  right: -5px;
+  top: 100%;
+  background: #1a1a1a;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 0;
+  border-radius: 8px;
+  z-index: 20;
+  width: 130px;
+  animation: fadeIn 0.18s ease;
+}
+
+.bubble-menu button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #ddd;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 13px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.bubble-menu button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bubble-menu button.danger {
+  color: #ff6961;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+  }
+/* ------------------------------------
+   GOLD EDGE FILE UPLOAD COMPONENT
+--------------------------------------- */
+
+.file-upload-wrapper {
+  margin-top: 20px;
+}
+
+/* Upload Box */
+.upload-box {
+  border: 2px dashed rgba(255, 215, 0, 0.4);
+  background: rgba(255, 215, 0, 0.06);
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: inset 0 0 12px rgba(255, 215, 0, 0.22);
+}
+
+.upload-box:hover {
+  background: rgba(255, 215, 0, 0.12);
+  border-color: rgba(255, 215, 0, 0.6);
+}
+
+.upload-box.dragging {
+  background: rgba(255, 215, 0, 0.18);
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.upload-icon {
+  color: #ffd700;
+  margin-bottom: 12px;
+}
+
+.upload-title {
+  font-size: 18px;
+  color: #f8e99b;
+  font-weight: 600;
+}
+
+.upload-sub {
+  font-size: 13px;
+  color: #c9c9c9;
+  margin-top: 4px;
+}
+
+/* Grid */
+.file-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+/* File Card */
+.file-card {
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.file-card:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+/* Icon */
+.file-icon {
+  color: #ffd700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Info */
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+}
+
+.file-size {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 3px;
+}
+
+/* Remove Button */
+.file-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 0, 0, 0.15);
+  border: none;
+  border-radius: 50%;
+  padding: 4px;
+  cursor: pointer;
+  color: #ff6363;
+  transition: 0.2s;
+}
+
+.file-remove:hover {
+  background: rgba(255, 0, 0, 0.25);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
+/* ----------------------------------------------------------------------
+   GOLD EDGE TOOL DRAWER (Bottom Sheet)
+---------------------------------------------------------------------- */
+
+/* Background Overlay */
+.tooldrawer-overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 999;
+}
+
+.tooldrawer-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Drawer Container */
+.tooldrawer-container {
+  position: absolute;
+  bottom: -420px;
+  left: 0;
+  right: 0;
+  background: rgba(25, 25, 25, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  box-shadow: 0 -6px 20px rgba(255, 215, 0, 0.25);
+  transition: bottom 0.28s ease-out;
+  border-top: 1.5px solid rgba(255, 215, 0, 0.35);
+}
+
+.tooldrawer-container.open {
+  bottom: 0;
+}
+
+/* Drawer Header */
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.drawer-header h3 {
+  font-size: 20px;
+  color: #ffe68a;
+  font-weight: 600;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.drawer-close:hover {
+  opacity: 1;
+}
+
+/* Tool Grid */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 18px;
+}
+
+/* Individual Tool Button */
+.tool-button {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 16px;
+  padding: 15px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  position: relative;
+}
+
+.tool-button:hover {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.35);
+  transform: translateY(-3px);
+}
+
+.tool-button span {
+  display: block;
+  margin-top: 10px;
+  color: #f0e8b5;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Icons */
+.tool-icon {
+  color: #ffd700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+/* TOOL MODAL BASE */
+.tool-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease;
+  z-index: 900;
+}
+
+.tool-modal,
+.tool-modal-large {
+  background: rgba(25,25,25,0.92);
+  border: 1px solid rgba(255,215,0,0.35);
+  padding: 22px;
+  border-radius: 18px;
+  width: 320px;
+  animation: slideUp 0.25s ease;
+}
+
+.tool-modal-large {
+  width: 480px;
+}
+
+/* Inputs */
+.tool-input, .tool-code-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+}
+
+.tool-code-input {
+  height: 160px;
+  resize: none;
+}
+
+/* Buttons */
+.tool-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tool-btn:hover {
+  background: #ffe88a;
+}
+
+.tool-cancel {
+  margin-top: 10px;
+  background: none;
+  width: 100%;
+  color: #bbb;
+  border: none;
+  cursor: pointer;
+}
+
+/* Vision Panel */
+.vision-panel {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,215,0,0.3);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.vision-upload {
+  cursor: pointer;
+  font-size: 15px;
+  color: #ffd700;
+}
+
+/* Animations */
+@keyframes slideUp { from {transform: translateY(20px); opacity:0;} to {transform: translateY(0); opacity:1;} }
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+/* TOOL MODAL OVERLAY */
+.tool-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease;
+  z-index: 900;
+}
+
+/* MODALS */
+.tool-modal,
+.tool-modal-large {
+  background: rgba(25,25,25,0.92);
+  border: 1px solid rgba(255,215,0,0.35);
+  padding: 22px;
+  border-radius: 18px;
+  width: 320px;
+  animation: slideUp 0.25s ease;
+}
+.tool-modal-large {
+  width: 480px;
+}
+
+/* INPUTS */
+.tool-input,
+.tool-code-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(255,255,255,0.07);
+  color: white;
+}
+.tool-code-input {
+  height: 160px;
+  resize: none;
+}
+
+/* BUTTONS */
+.tool-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.tool-btn:hover {
+  background: #ffe88a;
+}
+
+.tool-cancel {
+  margin-top: 10px;
+  background: none;
+  width: 100%;
+  color: #bbb;
+  border: none;
+  cursor: pointer;
+}
+
+/* VISION & FILE PANEL */
+.vision-panel {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,215,0,0.3);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.vision-upload {
+  cursor: pointer;
+  font-size: 15px;
+  color: #ffd700;
+}
+
+/* ANIMATIONS */
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* REASONING GRAPH WRAPPER */
+.reasoning-graph-wrapper {
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(20,20,20,0.8);
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 14px;
+}
+
+/* HEADER */
+.reasoning-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,215,0,0.25);
+}
+
+.reasoning-header h3 {
+  color: #ffd700;
+  margin: 0;
+}
+
+.reasoning-toggle {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* GRID */
+.reasoning-graph {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 25px;
+  padding-top: 14px;
+  position: relative;
+}
+
+/* FLOWCHART NODE */
+.reasoning-node {
+  background: rgba(35,35,35,0.75);
+  border: 1px solid rgba(255,215,0,0.4);
+  border-radius: 18px;
+  padding: 16px;
+  animation: fadeIn 0.3s ease;
+  position: relative;
+  box-shadow: 0 0 10px rgba(255,215,0,0.25);
+}
+
+/* Golden pulsing glow */
+.reasoning-node::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,215,0,0.45);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Step Number */
+.reasoning-index {
+  font-size: 17px;
+  font-weight: bold;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+
+/* Step Content */
+.reasoning-content {
+  color: #f5f5f5;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+/* Step Label (Thought / Execution / Decision) */
+.reasoning-type {
+  font-size: 12px;
+  color: #ddd;
+  opacity: 0.7;
+}
+
+/* CONNECTOR */
+.reasoning-connector {
+  display: flex;
+  justify-content: center;
+}
+
+.connector-line {
+  height: 24px;
+  width: 2px;
+  background: rgba(255,215,0,0.4);
+}
+
+/* ANIMATIONS */
+@keyframes pulseGlow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SETTINGS DRAWER */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.settings-drawer {
+  width: 360px;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.97);
+  border-left: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 28px;
+  overflow-y: auto;
+  animation: slideLeft 0.25s ease;
+}
+
+.settings-title {
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.settings-section {
+  margin-top: 22px;
+}
+
+.settings-label {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.settings-sub {
+  color: #ffd700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.settings-select,
+.settings-input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+}
+
+.settings-slider {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ddd;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.settings-close-btn {
+  width: 100%;
+  padding: 12px;
+  background: #ffd700;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  color: #000;
+  margin-top: 28px;
+  cursor: pointer;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(40px); opacity:0; }
+  to { transform: translateX(0); opacity:1; }
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+  }

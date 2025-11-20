@@ -1,0 +1,1 @@
+import React, { createContext } from 'react'; export const WorkspaceContext = createContext(); export function WorkspaceProvider({children}){ return <WorkspaceContext.Provider value={{}}>{children}</WorkspaceContext.Provider> }

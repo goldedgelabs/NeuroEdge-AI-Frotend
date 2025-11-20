@@ -1,0 +1,1 @@
+import React from 'react'; import { Link } from 'react-router-dom'; export default function Home(){ return (<div style={{padding:12}}><h2>Welcome to NeuroEdge</h2><p className='small'>Mobile-first, PWA-ready assistant.</p><div style={{marginTop:12}}><Link to='/chat' className='btn btn--primary'>Open Chat</Link></div></div>) }

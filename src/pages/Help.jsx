@@ -1,0 +1,1 @@
+import React from 'react'; export default function Help(){ return <div style={{padding:12}}><h3>Help</h3></div> }

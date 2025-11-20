@@ -1,0 +1,1 @@
+import React, { createContext } from 'react'; export const MemoryContext = createContext(); export function MemoryProvider({children}){ return <MemoryContext.Provider value={{}}>{children}</MemoryContext.Provider> }

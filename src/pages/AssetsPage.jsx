@@ -1,0 +1,1 @@
+import React from 'react'; import AssetsDashboard from '../components/assets/AssetsDashboard'; export default function AssetsPage(){ return <div style={{padding:12}}><AssetsDashboard/></div> }

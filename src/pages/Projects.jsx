@@ -1,0 +1,1 @@
+import React from 'react'; export default function Projects(){ return <div style={{padding:12}}><h3>Projects</h3></div> }

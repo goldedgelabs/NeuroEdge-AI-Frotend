@@ -1,0 +1,2 @@
+import React, { useState, useEffect } from 'react';
+export default function ThemeToggle(){ const [t,setT]=useState(localStorage.getItem('neuroedge_theme')||'dark'); useEffect(()=>{ localStorage.setItem('neuroedge_theme', t); document.documentElement.classList.toggle('light', t==='light'); },[t]); return (<div style={{display:'flex',gap:8,alignItems:'center'}}><button className='btn' onClick={()=> setT(t==='dark'?'light':'dark')}>Theme: {t}</button></div>) }

@@ -1,0 +1,1 @@
+import React from 'react'; export default function Agents(){ return <div style={{padding:12}}><h3>Agents</h3><div className='small'>Agents UI (mock)</div></div> }

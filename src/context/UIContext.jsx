@@ -1,7 +1,24 @@
-import React, { createContext, useState } from 'react';
-export const UIContext = createContext();
-export function UIProvider({children}){
+import React, { createContext, useContext, useState } from "react";
+
+const UIContext = createContext();
+export const useUI = () => useContext(UIContext);
+
+export const UIProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [floatingOpen, setFloatingOpen] = useState(false);
-  return <UIContext.Provider value={{sidebarOpen,setSidebarOpen,floatingOpen,setFloatingOpen}}>{children}</UIContext.Provider>
-}
+  const [showFloatingChat, setShowFloatingChat] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  const toggleSidebar = () => setSidebarOpen((v) => !v);
+  const toggleFloatingChat = () => setShowFloatingChat((v) => !v);
+
+  const value = {
+    sidebarOpen,
+    toggleSidebar,
+    isMobile,
+    setIsMobile,
+    showFloatingChat,
+    toggleFloatingChat,
+  };
+
+  return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
+};

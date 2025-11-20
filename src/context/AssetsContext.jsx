@@ -1,33 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Create the context
 const AssetsContext = createContext();
+export const useAssets = () => useContext(AssetsContext);
 
-// Provider component
 export const AssetsProvider = ({ children }) => {
   const [assets, setAssets] = useState({
-    icons: {},
-    images: {},
-    logos: {},
+    logo: "/assets/logo.png",
+    splash: "/assets/splash.png",
+    icon: "/assets/icon.png",
+    founder: {
+      name: "Joseph Were",
+      email: "josephogwe8@gmail.com",
+      phone: "+254712562780",
+    },
   });
 
-  // Function to register assets dynamically
-  const registerAsset = (key, value) => {
-    setAssets((prev) => ({
-      ...prev,
-      [key]: {
-        ...prev[key],
-        ...value,
-      },
-    }));
+  const updateAsset = (key, value) => {
+    setAssets((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
-    <AssetsContext.Provider value={{ assets, registerAsset }}>
+    <AssetsContext.Provider value={{ assets, updateAsset }}>
       {children}
     </AssetsContext.Provider>
   );
 };
-
-// Hook to use the context elsewhere
-export const useAssets = () => useContext(AssetsContext);

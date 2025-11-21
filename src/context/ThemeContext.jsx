@@ -4,22 +4,45 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const stored = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(stored || "system"); // light | dark | system
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "system";
+  });
 
+  // Listen for system theme changes (live updates)
+  useEffect(() => {
+    const system = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applySystemTheme = () => {
+      if (theme === "system") {
+        document.documentElement.classList.toggle("dark", system.matches);
+        document.documentElement.classList.toggle("light", !system.matches);
+      }
+    };
+
+    system.addEventListener("change", applySystemTheme);
+    applySystemTheme();
+
+    return () => system.removeEventListener("change", applySystemTheme);
+  }, [theme]);
+
+  // Apply theme on change
   useEffect(() => {
     const root = document.documentElement;
 
+    // Remove previous classes safely
+    root.classList.remove("light", "dark");
+
     if (theme === "system") {
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      root.className = prefersDark ? "dark" : "light";
+      root.classList.add(prefersDark ? "dark" : "light");
     } else {
-      root.className = theme;
+      root.classList.add(theme);
     }
 
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Cycle between themes
   const toggleTheme = () => {
     setTheme((prev) =>
       prev === "light" ? "dark" : prev === "dark" ? "system" : "light"

@@ -1,0 +1,83 @@
+.theme-toggle-container {
+  width: 70px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Track (background) */
+.toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--panel);
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+}
+
+/* Track colors based on theme */
+.toggle-track.light {
+  background: linear-gradient(90deg, #ffd261, #ffefb0);
+}
+
+.toggle-track.dark {
+  background: linear-gradient(90deg, #0f172a, #1e293b);
+}
+
+.toggle-track.system {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+}
+
+/* Thumb (the sliding circle) */
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  width: 28px;
+  height: 28px;
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+/* Positions */
+.toggle-thumb.light {
+  left: 3px;
+  transform: rotate(0deg);
+}
+
+.toggle-thumb.dark {
+  left: calc(100% - 31px);
+  transform: rotate(-25deg);
+}
+
+.toggle-thumb.system {
+  left: calc(50% - 15px);
+  transform: rotate(25deg);
+}
+
+/* Icons */
+.icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.35s ease;
+}
+
+.sun {
+  color: #ffb703;
+}
+
+.moon {
+  color: #94a3b8;
+}
+
+.system {
+  color: var(--accent1);
+}

@@ -1,0 +1,1 @@
+export default function SearchPage(){ return <div>Search Placeholder</div> }

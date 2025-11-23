@@ -1,0 +1,1 @@
+To build embed bundle, install esbuild as a dev dependency: npm i -D esbuild, then run npm run build-embed

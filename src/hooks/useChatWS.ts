@@ -1,0 +1,3 @@
+import { useEffect, useRef, useState } from 'react'
+import { streamChatUrl } from '../api/chat'
+export function useChatWS(onMessage){ const [connected,setConnected]=useState(false); const [messages,setMessages]=useState([]); useEffect(()=>{let ws; try{ws=new WebSocket(streamChatUrl()); ws.onopen=()=>setConnected(true); ws.onmessage=(e)=>{ let d=e.data; try{d=JSON.parse(e.data)}catch{}; setMessages(m=>[...m,d]); onMessage?.(d)}; ws.onclose=()=>setConnected(false)}catch(e){console.error('ws',e)}; return ()=>ws?.close()},[]); return { connected, messages, send:(p)=>{ try{ ws?.send(JSON.stringify(p)); return true }catch{return false} } } }

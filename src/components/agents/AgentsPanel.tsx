@@ -1,0 +1,1 @@
+export default function AgentsPanel(){ return <div>AgentsPanel Placeholder</div> }

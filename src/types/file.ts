@@ -1,0 +1,1 @@
+export type FileMeta = { name:string, size:number, type:string }

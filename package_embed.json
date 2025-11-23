@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build-embed": "node scripts/build-embed.js"
+  }
+}

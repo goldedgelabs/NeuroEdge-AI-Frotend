@@ -1,0 +1,1 @@
+Next.js starter. Move components into pages/_app.tsx and adjust imports as needed.

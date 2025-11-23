@@ -1,0 +1,12 @@
+
+version: '3.8'
+services:
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+  mock-backend:
+    build: ./mock-backend
+    ports:
+      - "8080:8080"
+    command: ["node", "index.js"]

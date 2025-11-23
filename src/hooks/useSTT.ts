@@ -1,0 +1,1 @@
+export default function useSTT(){ return { start:()=>{}, stop:()=>{} } }

@@ -1,0 +1,1 @@
+export type ChatMsg = { role: 'user'|'assistant', text:string, ts?:number }

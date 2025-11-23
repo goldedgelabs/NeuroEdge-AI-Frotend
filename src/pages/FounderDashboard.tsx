@@ -1,0 +1,1 @@
+export default function FounderDashboard(){ return <div>Founder Dashboard Placeholder</div> }

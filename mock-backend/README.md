@@ -1,0 +1,1 @@
+Mock backend for NeuroEdge. Start with `npm install` then `npm start`.

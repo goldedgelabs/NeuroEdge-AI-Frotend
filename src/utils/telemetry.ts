@@ -1,0 +1,1 @@
+export function track(){ /* telemetry placeholder (opt-in) */ }

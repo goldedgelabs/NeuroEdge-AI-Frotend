@@ -1,0 +1,1 @@
+export default function FloatingAssistant(){ return <div>FloatingAssistant Placeholder</div> }
